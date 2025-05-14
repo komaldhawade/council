@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ content.HomepageTitle }}{% endblock %}
+
+{% block content %}
+
+<header>
+    <h1>{{ content.HomepageTitle }}</h1>
+    {% if content.LogoImg %}
+    <img src="{{ content.LogoImg.url }}" alt="{{ content.LogoImgAltTag }}">
+    {% endif %}
+</header>
+
+<section id="banner">
+    {% if content.HomeBannerImg %}
+    <img src="{{ content.HomeBannerImg.url }}" alt="{{ content.HomeBannerImgAltTag }}">
+    {% endif %}
+</section>
+
+<section id="about">
+    <h2>{{ content.AboutTitle }}</h2>
+    <p>{{ content.AboutDescription }}</p>
+    {% if content.AboutImg %}
+    <img src="{{ content.AboutImg.url }}" alt="{{ content.AboutImgAltTag }}">
+    {% endif %}
+</section>
+
+<section id="objectives">
+    <h2>{{ content.ObjectiveTitle }}</h2>
+    <p>{{ content.ObjectiveDescription }}</p>
+</section>
+
+<section id="gallery">
+    <h2>{{ content.GalleryVideoTitle }}</h2>
+    {% if content.GalleryImg %}
+    <img src="{{ content.GalleryImg }}" alt="{{ content.GalleryImgAltTag }}">
+    {% endif %}
+    {% if content.GalleryVideoURL %}
+    <iframe width="560" height="315" src="{{ content.GalleryVideoURL|safe }}"></iframe>
+    {% endif %}
+</section>
+
+<section id="country-glance">
+    <h2>{{ content.CountryGlancesTitle }}</h2>
+
+    <h3>{{ content.OfficialNameTitle }}</h3>
+    <p>{{ content.OfficialNameParagraph }}</p>
+
+    <h3>{{ content.CapitalCityTitle }}</h3>
+    <p>{{ content.CapitalCityParagraph }}</p>
+
+    <h3>{{ content.LocationTitle }}</h3>
+    <p>{{ content.LocationParagraph }}</p>
+
+    <h3>{{ content.AreaTitle }}</h3>
+    <p>{{ content.AreaParagraph }}</p>
+
+    <h3>{{ content.PopulationTitle }}</h3>
+    <p>{{ content.PopulationParagraph }}</p>
+
+    <h3>{{ content.LanguageTitle }}</h3>
+    <p>{{ content.LanguageParagraph }}</p>
+
+    <h3>{{ content.ExportsTitle }}</h3>
+    <p>{{ content.ExportsParagraph }}</p>
+
+    <h3>{{ content.ImportTitle }}</h3>
+    <p>{{ content.ImportParagraph }}</p>
+
+    <h3>{{ content.CurrencyTitle }}</h3>
+    <p>{{ content.CurrencyParagraph }}</p>
+
+    <h3>{{ content.CountryCodeTitle }}</h3>
+    <p>{{ content.CountryCodeParagraph }}</p>
+
+    <h3>{{ content.TimeZoneTitle }}</h3>
+    <p>{{ content.TimeZoneParagraph }}</p>
+</section>
+{% endblock %}
+

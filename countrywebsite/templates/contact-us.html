@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+
+<section id="about" class="about py-0">
+
+
+    <div class="breadcrumbs">
+        <div class="page-header d-flex align-items-center"
+            style="background-image: url('{% static 'images/india-kazakhstan-business-and-cultural-council-contact-us.jpg' %}');">
+            <div class="container position-relative">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-6 col-12 container text-center">
+                        <h1 class="py-4 text-light fs-1" style="font-family: 'Times New Roman', Times, serif;">
+                            <br>Contact Us
+                            <br>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="contact" class="contact py-0 mt-4">
+        <div class="container" data-aos="fade-up">
+
+            <div>
+                <iframe Class="container"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.911023887289!2d77.218783!3d28.542394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce222b83545c1%3A0x8db3a17e864c5cf0!2sHDFC%20Bank!5e0!3m2!1sen!2sin!4v1688983531218!5m2!1sen!2sin"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                <div class="row gy-4 mt-4">
+
+                    <div class="col-lg-4">
+
+                        <div class="info-item d-flex">
+                            <i class="bi bi-geo-alt flex-shrink-0"></i>
+                            <div>
+                                <h4>Location:</h4>
+                                <p>S-357, 1st Floor, Near HDFC Bank, Panchseel Park, New Delhi-110017</p>
+                            </div>
+                        </div><!-- End Info Item -->
+                        <div class="info-item d-flex">
+                            <i class="bi bi-envelope flex-shrink-0"></i>
+                            <div>
+                                <h4>Email:</h4>
+                                <p>info@gibf.biz</p>
+                            </div>
+                        </div><!-- End Info Item -->
+                        <div class="info-item d-flex">
+                            <i class="bi bi-phone flex-shrink-0"></i>
+                            <div>
+                                <h4>Call:</h4>
+                                <p>+91 8530556006</p>
+                            </div>
+                        </div><!-- End Info Item -->
+                    </div>
+                    <div class="col-lg-8 mb-3">
+                        <form action="forms/contact.php" method="post" class="php-email-form">
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <input type="text" name="name" class="form-control" id="name"
+                                        placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6 form-group mt-3 mt-md-0">
+                                    <input type="email" class="form-control" name="email" id="email"
+                                        placeholder="Your Email" required>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="text" class="form-control" name="subject" id="subject"
+                                    placeholder="Subject" required>
+                            </div>
+                            <div class="form-group mt-3">
+                                <textarea class="form-control" name="message" rows="5" placeholder="Message"
+                                    required></textarea>
+                            </div>
+                            <div class="my-3">
+                                <div class="loading">Loading</div>
+                                <div class="error-message"></div>
+                                <div class="sent-message">Your message has been sent. Thank you!</div>
+                            </div>
+
+
+                            <div class="col-md-12 form-group">
+                                <section id="captcha" class="py-0 mt-3">
+                                    <div class="form-group">
+
+                                        <div class="captcha-code">
+
+                                            <div class="code ">
+
+
+                                                <div class="dynamic-code"></div>
+                                            </div>
+                                            <div class="captcha-reload">
+                                                <i class="bi bi-arrow-clockwise"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="captcha-input">
+                                            <input type="text" class="form-control" id="captcha-input" required
+                                                autocomplete="off" placeholder="Enter captcha code ...">
+                                            <span id="errCaptcha"></span>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </section>
+
+                            </div>
+
+                            <div class="text-center"><button id="btn" type="submit">Send
+                                    Message</button></div>
+                        </form>
+                    </div><!-- End Contact Form -->
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+    <script>
+    function total_cal() {
+        var one_day_count = document.getElementById("result").value;
+        var two_day_count = document.getElementById("result1").value;
+        document.getElementById("amount").value = (3540 * one_day_count) + (5900 * two_day_count);
+    }
+
+    //allow only number input
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        return (charCode > 47 && charCode < 58 || charCode == 8 || charCode == 9 || charCode == 46 || charCode > 36 &&
+            charCode < 41);
+    }
+
+
+    //allow only number input
+    function isAlpha(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        return (charCode > 64 && charCode < 91 || charCode > 96 && charCode < 123 || charCode == 8 || charCode == 9 ||
+            charCode == 46 || charCode > 36 && charCode < 41);
+    }
+
+    //generate captcha
+    function generateCaptcha(length, chars) {
+        var result = '';
+        for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
+        return result;
+    }
+
+    //default captcha
+    $('.dynamic-code').text(generateCaptcha(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+
+    $('.captcha-reload').on('click', function() {
+        $('.dynamic-code').text(generateCaptcha(5,
+            '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+    });
+
+    //check captcha
+    $('#captcha-input').on('change', function() {
+        if ($(this).val() != $('.dynamic-code').text()) {
+            $('#errCaptcha').html(
+                '<span style="color: red;"><i class="ion-close"></i> Captecha not matched.</span>');
+            $(this).val('');
+        } else {
+            $('#errCaptcha').html('');
+        }
+    });
+    </script>
+</section>
+{% endblock %}

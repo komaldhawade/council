@@ -1,0 +1,62 @@
+{% load static %}
+<header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+        <nav id="navbar" class="navbar  ">
+            <ul>
+                <li><a href="/" class="text-uppercase text-light  "
+                       style=" font-weight: 900;text-shadow:0px 0px 4px black;font-size:.90rem;">HOME</a></li>
+
+                <li class="dropdown"><a class=" fw-bolder text-light" href="#"><span class="text-uppercase  fw-bolder "
+                       style="text-shadow:0px 0px 4px black;font-size:.90rem;">ABOUT Kazakhstan</span>
+                    <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                    <ul>
+                        <li><a href="culture-of-kazakhstan">Culture of Kazakhstan</a></li>
+                        <!--li><a  href="#">About the Ambassador
+                     </a></li-->
+                        <li><a href="reports-and-publications-in-kazakhstan">Reports and Publications</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a class=" fw-bolder text-light" href="#"><span class="text-uppercase  fw-bolder "
+                        style="text-shadow:0px 0px 4px black;font-size:.90rem;">BUSINESS OPPORTUNITIES</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                    <ul>
+                        <li><a href="tender-listing.php">Tender Listing</a></li>
+                        <li><a href="business-enquiry.php">Business Enquiry</a></li>
+                        <li><a href="why-invest-in-kazakhstan.php">Why Invest In Kazakhstan</a></li>
+                        <li><a href="import-and-export-of-kazakhstan.php">Import and Export of Kazakhstan</a></li>
+
+
+                    </ul>
+                </li>
+                <li><a href="useful-links.php" class="  text-light text-uppercase"
+                       style=" font-weight: 900;text-shadow:0px 0px 4px black;font-size:.90rem;">USEFUL LINKS</a></li>
+                <li class="dropdown"><a class=" fw-bolder text-light" href="#"><span class="text-uppercase  fw-bolder "
+                                                                                     style="text-shadow:0px 0px 4px black;font-size:.90rem;">ABOUT GIBF</span>
+                    <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                    <ul>
+                        <li><a href="{% url 'about_gibf' %}">About GIBF</a></li>
+                        <li><a href="{% url 'president_message' %}">President Message</a></li>
+                        <li><a href="{% url 'gibf_iso_certificate' %}">GIBF ISO Certificate</a></li>
+                        <li><a href="{% url 'legal_documents' %}">Legal Documents</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown"><a class=" fw-bolder text-light" href="#"><span class="text-uppercase  fw-bolder "
+                    style="text-shadow:0px 0px 4px black;font-size:.90rem;">BUSINESS & MEDIA</span>
+                    <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+                    <ul>
+                        <li><a href="news">News</a></li>
+                        <li><a href="activity">Activity</a></li>
+                        <li><a href="video-gallery">Video Gallery</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'contact_us' %}" class="  text-light text-uppercase"
+                       style="font-weight: 900;text-shadow:0px 0px 4px black;font-size:.90rem;">Contact</a></li>
+
+            </ul>
+        </nav><!-- .navbar -->
+
+    </div>
+
+</header>
