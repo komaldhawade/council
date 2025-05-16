@@ -1,81 +1,111 @@
-{% extends "base.html" %}
+ {% extends "base.html" %}
 {% load static %}
 
 {% block title %}{{ content.HomepageTitle }}{% endblock %}
 
 {% block content %}
 
-<header>
-    <h1>{{ content.HomepageTitle }}</h1>
-    {% if content.LogoImg %}
-    <img src="{{ content.LogoImg.url }}" alt="{{ content.LogoImgAltTag }}">
-    {% endif %}
-</header>
+<main id="main">
 
-<section id="banner">
-    {% if content.HomeBannerImg %}
-    <img src="{{ content.HomeBannerImg.url }}" alt="{{ content.HomeBannerImgAltTag }}">
-    {% endif %}
-</section>
+    <div class="breadcrumbs">
+        <div class="page-header d-flex align-items-center"
+            style="background-image: url('{% static 'images/india-kazakhstan-business-and-cultural-council.jpg' %}');">
+            <div class="container position-relative">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-6 col-12 container text-center">
+                        <div class="py-1 fs-1 d-none d-md-block"><br><br></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<section id="about">
-    <h2>{{ content.AboutTitle }}</h2>
-    <p>{{ content.AboutDescription }}</p>
-    {% if content.AboutImg %}
-    <img src="{{ content.AboutImg.url }}" alt="{{ content.AboutImgAltTag }}">
-    {% endif %}
-</section>
+    <!-- Logo & Title Section -->
+    <div class="text-center container-fluid">
+        <img src="{% static 'images/india-kazakhstan-business-and-cultural-council-and-gibf-logo.jpg' %}" 
+             class="img-fluid ind mt-3" 
+             alt="India Kazakhstan Business and Cultural Council and GIBF logo">
+        <h1 class="text-dark fs-3 text-uppercase" style="font-family: 'Times New Roman', Times, serif;">
+            India Kazakhstan Business and Cultural Council
+        </h1>
+    </div>
 
-<section id="objectives">
-    <h2>{{ content.ObjectiveTitle }}</h2>
-    <p>{{ content.ObjectiveDescription }}</p>
-</section>
+    <!-- Optional: Dynamic Content Section -->
+    <header class="text-center mt-4">
+        <h2>{{ content.HomepageTitle }}</h2>
+        {% if content.LogoImg %}
+            <img src="{{ content.LogoImg.url }}" alt="{{ content.LogoImgAltTag }}" class="img-fluid mt-2">
+        {% endif %}
+    </header>
 
-<section id="gallery">
-    <h2>{{ content.GalleryVideoTitle }}</h2>
-    {% if content.GalleryImg %}
-    <img src="{{ content.GalleryImg }}" alt="{{ content.GalleryImgAltTag }}">
-    {% endif %}
-    {% if content.GalleryVideoURL %}
-    <iframe width="560" height="315" src="{{ content.GalleryVideoURL|safe }}"></iframe>
-    {% endif %}
-</section>
+    <section id="banner" class="text-center mt-3">
+        {% if content.HomeBannerImg %}
+            <img src="{{ content.HomeBannerImg.url }}" alt="{{ content.HomeBannerImgAltTag }}" class="img-fluid">
+        {% endif %}
+    </section>
 
-<section id="country-glance">
-    <h2>{{ content.CountryGlancesTitle }}</h2>
+    <section id="about" class="mt-5 container">
+        <h2>{{ content.AboutTitle }}</h2>
+        <p>{{ content.AboutDescription }}</p>
+        {% if content.AboutImg %}
+            <img src="{{ content.AboutImg.url }}" alt="{{ content.AboutImgAltTag }}" class="img-fluid">
+        {% endif %}
+    </section>
 
-    <h3>{{ content.OfficialNameTitle }}</h3>
-    <p>{{ content.OfficialNameParagraph }}</p>
+    <section id="objectives" class="mt-5 container">
+        <h2>{{ content.ObjectiveTitle }}</h2>
+        <p>{{ content.ObjectiveDescription }}</p>
+    </section>
 
-    <h3>{{ content.CapitalCityTitle }}</h3>
-    <p>{{ content.CapitalCityParagraph }}</p>
+    <section id="gallery" class="mt-5 container text-center">
+        <h2>{{ content.GalleryVideoTitle }}</h2>
+        {% if content.GalleryImg %}
+            <img src="{{ content.GalleryImg }}" alt="{{ content.GalleryImgAltTag }}" class="img-fluid">
+        {% endif %}
+        {% if content.GalleryVideoURL %}
+            <div class="mt-3">
+                <iframe width="560" height="315" src="{{ content.GalleryVideoURL|safe }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+        {% endif %}
+    </section>
 
-    <h3>{{ content.LocationTitle }}</h3>
-    <p>{{ content.LocationParagraph }}</p>
+    <section id="country-glance" class="mt-5 container">
+        <h2>{{ content.CountryGlancesTitle }}</h2>
 
-    <h3>{{ content.AreaTitle }}</h3>
-    <p>{{ content.AreaParagraph }}</p>
+        <h3>{{ content.OfficialNameTitle }}</h3>
+        <p>{{ content.OfficialNameParagraph }}</p>
 
-    <h3>{{ content.PopulationTitle }}</h3>
-    <p>{{ content.PopulationParagraph }}</p>
+        <h3>{{ content.CapitalCityTitle }}</h3>
+        <p>{{ content.CapitalCityParagraph }}</p>
 
-    <h3>{{ content.LanguageTitle }}</h3>
-    <p>{{ content.LanguageParagraph }}</p>
+        <h3>{{ content.LocationTitle }}</h3>
+        <p>{{ content.LocationParagraph }}</p>
 
-    <h3>{{ content.ExportsTitle }}</h3>
-    <p>{{ content.ExportsParagraph }}</p>
+        <h3>{{ content.AreaTitle }}</h3>
+        <p>{{ content.AreaParagraph }}</p>
 
-    <h3>{{ content.ImportTitle }}</h3>
-    <p>{{ content.ImportParagraph }}</p>
+        <h3>{{ content.PopulationTitle }}</h3>
+        <p>{{ content.PopulationParagraph }}</p>
 
-    <h3>{{ content.CurrencyTitle }}</h3>
-    <p>{{ content.CurrencyParagraph }}</p>
+        <h3>{{ content.LanguageTitle }}</h3>
+        <p>{{ content.LanguageParagraph }}</p>
 
-    <h3>{{ content.CountryCodeTitle }}</h3>
-    <p>{{ content.CountryCodeParagraph }}</p>
+        <h3>{{ content.ExportsTitle }}</h3>
+        <p>{{ content.ExportsParagraph }}</p>
 
-    <h3>{{ content.TimeZoneTitle }}</h3>
-    <p>{{ content.TimeZoneParagraph }}</p>
-</section>
+        <h3>{{ content.ImportTitle }}</h3>
+        <p>{{ content.ImportParagraph }}</p>
+
+        <h3>{{ content.CurrencyTitle }}</h3>
+        <p>{{ content.CurrencyParagraph }}</p>
+
+        <h3>{{ content.CountryCodeTitle }}</h3>
+        <p>{{ content.CountryCodeParagraph }}</p>
+
+        <h3>{{ content.TimeZoneTitle }}</h3>
+        <p>{{ content.TimeZoneParagraph }}</p>
+    </section>
+
+</main>
+
 {% endblock %}
-

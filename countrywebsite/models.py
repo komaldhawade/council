@@ -98,10 +98,65 @@ class HomePageContent(models.Model):
 
 class AboutCountry(models.Model):
     aboutcountry_id = models.AutoField(primary_key=True)
-    web_id = models.ForeignKey(CountryWebsite, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    description = models.TextField()
-    image = models.ImageField(upload_to='about/')
+    web_id = models.ForeignKey('CountryWebsite', on_delete=models.CASCADE, db_column='web_id')
+    aboutcountryTitle = models.CharField(max_length=255, blank=True, null=True)
+    aboutcountrySlug = models.SlugField(unique=True)
+    MetaDescription = models.TextField(blank=True, null=True)
+    MetaKeyword = models.CharField(max_length=255, blank=True, null=True)
+
+    aboutcountryImg = models.ImageField(
+        upload_to="about_banners/", blank=True, null=True
+    )
+    aboutcountryImgBannerFileName = models.CharField(
+        max_length=255, blank=True, null=True
+    )
+    aboutcountryBannerImgAltTag = models.CharField(max_length=255, blank=True, null=True)
+
+    AboutDescription = models.TextField(blank=True, null=True)
+
+    # culture section
+    H_TYPE_CHOICES = [
+        ("h1", "H1"),
+        ("h2", "H2"),
+        ("h3", "H3"),
+        ("h4", "H4"),
+        ("h5", "H5"),
+        ("h6", "H6"),
+    ]
+    h_type = models.CharField(
+        max_length=2, choices=H_TYPE_CHOICES, blank=True, null=True
+    )
+    h_title = models.CharField(max_length=255, blank=True, null=True)
+    h_position = models.CharField(
+        max_length=10,
+        blank=True,
+        null=True,
+        default="center",
+    )
+    is_h_ruler = models.BooleanField(default=False)
+
+    p_content = models.TextField(blank=True, null=True)
+    li_content = models.TextField(blank=True, null=True)
+
+    section_img = models.ImageField(upload_to="section_images/", blank=True, null=True)
+    section_img_file_name = models.CharField(max_length=255, blank=True, null=True)
+    section_img_alt_tag = models.CharField(max_length=255, blank=True, null=True)
+    section_img_position = models.CharField(
+        max_length=50, blank=True, null=True, default="center"
+    )
+
+    is_hr = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+
+    def save(self, *args, **kwargs):
+        if not self.h_position:
+            self.h_position = "center"  # fallback if not manually selected
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.article.article_title} - {self.h_title or 'Section'}"
+
+
 
 class BusinessOpportunities(models.Model):
     businessopportunities_id = models.AutoField(primary_key=True)
