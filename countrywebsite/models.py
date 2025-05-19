@@ -49,7 +49,7 @@ class HomePageContent(models.Model):
     AboutImgFileName = models.CharField(max_length=255, blank=True, null=True)
     AboutImgAltTag = models.CharField(max_length=255, blank=True, null=True)
 
-    ObjectiveTitle = models.CharField(max_length=255)
+    ObjectiveTitle= models.CharField(max_length=255)
     ObjectiveDescription = models.TextField(blank=True, null=True)
 
     GalleryVideoTitle = models.CharField(max_length=255)
